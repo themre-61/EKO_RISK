@@ -1,0 +1,85 @@
+<!--
+	THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/en/editor.html?c=pie-half-donut&code=PTAEBUAsEsGdQKYA8CGBbADgGwaATggI4Cu0B8AogMKQp4Au8AbgKwB07ADKAPZ6hYU9BHgBQPDPWg8AdqAC8oAN6jQoKfRwAuFWrXCk9LaADkAIWj0A1tBx5ooANIA3-gB_QFa7YQBPBHJeVgF20HIAmm4AXgAmCKEAFACkAJQmqqAAvgA0GfQ8PFhSGMa6evT2AOaVIsYmlgho6Wo5GTg1MjGlGfoSdSxJJrl6AggAZkamAMYBwnjNWcOgsCLQCLDGANo9yjtqMugIdUN76r4YR6YYaycjangoMdDEG6CbJgAsnIPZpgDs3xMAF0liMZjI5lsTCxAb8TADBiDTiBQI8AFYvejqSC4WD0OhYlCdRDEomVHCnPEEgCCMnJlwAjAAOTigvQBGK0-nGADMADZWacYkIUFtTmolKAmCgsMRGZwPkzfgc0JcTAAJFAAI0sQicKF8WsAjIAmRbi5RSmVy4x_HksZWHOoAZWIgisoGpghkgjwRrkjmIeGI9FdaBQsBNZruekl0tllxYLIdqrqAHk8GGZBGooJAPqAYdNrWjEst8eMio-ybV4SJWCNuY9DyiDgDWC9RrQkaLxdjVsuPM4rNAKrVjlmKywoBrviNdaaWVOQJ2mQyS8yAG4gA
+	⚠ Please be aware that this chart is not an official demo of Apache ECharts but is made by user-generated code.
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-gl/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-stat/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-graph-modularity/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    // This example requires ECharts v5.5.0 or later
+option = {
+  title:{
+    text: 'Bitkileri Kötü Etkileyen Etkenlerin Yüzdeleri(%)'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    top: '5%',
+    left: 'center'
+  },
+  series: [
+    {
+      name: '',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      center: ['50%', '70%'],
+      // adjust the start and end angle
+      startAngle: 180,
+      endAngle: 360,
+      data: [
+        { value: 1048, name: 'Habitat Kaybı' },
+        { value: 735, name: 'Sulak Alanların Kurutulması' },
+        { value: 580, name: 'Ormansızlaşma' },
+        { value: 484, name: 'Yanlış Arazi Kullanımı' },
+        { value: 300, name: 'Kentsel Yayılım' }
+      ]
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>

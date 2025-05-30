@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="new_css/style1.css">
+  <title>EKORİSK</title>
+  <style>
+    /* EKLENMESİ GEREKEN CSS KURALLARI */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      position: relative;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .menu-item {
+      position: relative;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      background: #043b08;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      min-width: 200px;
+    }
+
+    .menu-item:hover .submenu {
+      display: block;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #037722;
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      }
+
+      .nav.active {
+        max-height: 1000px;
+        padding: 1rem;
+      }
+
+      .submenu {
+        position: static;
+        display: none;
+        background: #043b08;
+        box-shadow: none;
+      }
+
+      .menu-item.active .submenu {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo-container">
+      <img src="images/logo4.png" alt="EKORİSK Logo">
+    </div>
+    <button class="mobile-menu-btn">☰</button>
+    
+    <nav class="nav">
+      <a href="index.html" class="active">Ana Sayfa</a>
+      <a href="index1.html">Profilim</a>
+
+      <div class="menu-item">
+        <a href="#" class="menu-toggle">Hayvanlar</a>
+        <div class="submenu">
+          <a href="memeli.html">Memeliler</a>
+          <a href="kuslar.html">Kuşlar</a>
+          <a href="sürüngen.html">Sürüngenler</a>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <a href="#" class="menu-toggle">Bitkiler</a>
+        <div class="submenu">
+          <a href="tohumlu.html">Tohumlu</a>
+          <a href="cicekli.html">Çiçekli</a>
+          <a href="mantar.html">Mantarlar</a>
+        </div>
+      </div>
+
+      <a href="data.html">Veri Tablosu</a>
+    </nav>
+  </div>
+
+  <div class="content">
+    <div class="main-content">
+      <h1>EKORİK-Doğaya Umut Olun</h1>
+      <p>Gezegenimiz, yaşamın kaynağı olan ekolojik dengeyle ayakta duruyor. Ancak ormanların yok edilmesi, iklim değişikliği, plastik kirliliği ve biyolojik çeşitliliğin azalması gibi tehditler bu dengeyi her geçen gün daha da zorluyor. Biz, bu gidişatı durdurmak için çalışıyoruz ama sizin desteğiniz olmadan başaramayız.</p>
+
+      <p>Yapacağınız her bağış;</p>
+      <li>Bir fidanın toprakla buluşmasına</li>
+      <li> su kaynağının korunmasına</li>
+      <li>Nesli tükenmekte olan canlıların yaşam alanlarının savunulmasına katkı sağlar.</li>
+
+      <p>Gelin, birlikte doğayı koruyalım. Gelecek nesiller için yaşanabilir bir dünya bırakmak sizin ellerinizde.</p>
+
+      <p>Şimdi bağış yapın, ekolojik dengenin sürdürülmesine destek olun.</p>
+      <p>Ad-Soyad:Ekorisk Vakfı</p>
+      <p>IBAN: TR007589615028990000789517</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a>
+      <a href="bagis.html">Bağış Yap</a>
+    </div>
+    <p>© 2025 EKORİSK - Tüm hakları saklıdır...</p>
+  </footer>
+
+  <script>
+    // Gerekli JavaScript Kodları
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
+      const nav = document.querySelector('.nav');
+      nav.classList.toggle('active');
+      this.textContent = nav.classList.contains('active') ? '✕' : '☰';
+    });
+
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const parent = this.closest('.menu-item');
+          parent.classList.toggle('active');
+          
+          document.querySelectorAll('.menu-item').forEach(item => {
+            if (item !== parent) item.classList.remove('active');
+          });
+        }
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        if (!e.target.closest('.nav') && !e.target.closest('.mobile-menu-btn')) {
+          document.querySelector('.nav').classList.remove('active');
+          document.querySelector('.mobile-menu-btn').textContent = '☰';
+          document.querySelectorAll('.menu-item').forEach(item => {
+            item.classList.remove('active');
+          });
+        }
+      }
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        document.querySelector('.nav').classList.remove('active');
+        document.querySelector('.mobile-menu-btn').textContent = '☰';
+        document.querySelectorAll('.menu-item').forEach(item => {
+          item.classList.remove('active');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

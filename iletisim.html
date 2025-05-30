@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <link rel="stylesheet" href="new_css/style1.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EKORİSK</title>
+  <style>
+    /* EKSİK CSS DÜZELTMELERİ */
+    .topbar {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+        order: 2; /* Butonu sağa al */
+      }
+
+      .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgb(7, 133, 14);
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      }
+
+      .nav.active {
+        max-height: 1000px;
+        padding: 1rem;
+      }
+
+      .nav .menu-item {
+        flex-direction: column;
+      }
+
+      .submenu {
+        position: static;
+        display: none;
+        background: #043b08;
+        margin-left: 1rem;
+      }
+
+      .menu-item.active .submenu {
+        display: block;
+      }
+    }
+  </style>
+  
+ 
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo-container">
+      <img src="images/logo4.png" alt="EKORİSK Logo">
+    </div>
+
+    <button class="mobile-menu-btn" aria-label="Menüyü aç/kapat">☰</button>
+
+    <nav class="nav">      
+      <a href="index.html" class="active">Ana Sayfa</a>
+      <a href="index1.html">Profilim</a>
+
+      <div class="menu-item">
+        <a href="#">Hayvanlar</a>
+        <div class="submenu">
+          <a href="memeli.html">Memeliler</a>
+          <a href="kuslar.html">Kuşlar</a>
+          <a href="sürüngen.html">Sürüngenler</a>
+
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <a href="#">Bitkiler</a>
+        <div class="submenu">
+          <a href="tohumlu.html">Tohumlu</a>
+          <a href="cicekli.html">Çiçekli</a>
+          <a href="mantar.html">Mantarlar</a>
+        </div>
+      </div>
+
+
+    <a href="data.html">Veri Tablosu</a>
+  </div>
+    </nav>
+  
+  
+  <div class="content">
+    <div class="main-content">
+        <h1>İLETİŞİM KANALLARIMIZ</h1>
+        <p>Telefon Numarası:0505 555 5555</p>
+        <p>Fax No:0412 242 1111</p>
+        <p>E-Mail:ekorisk@gmail.com</p>
+        <p>Sosyal Medya: İnstagram:ekorisk/X:ekoriskk/Facebook:ekorisk</p>
+        <p>Adres:Ilımlı Mah. Ilımsız Sk. Ilım Apt. Kat:1 No:1 İstanbul/TÜRKİYE</p>        
+    </div>
+    <div class="gallery">
+        <img src="images/iş.jpg" alt="İş yeri">
+    </div>
+  </div>
+  <footer>
+    <div class="footer-links">
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a>
+      <a href="bagis.html">Bağış Yap</a>
+    </div>
+    <p>© 2025 EKORİSK - Tüm hakları saklıdır...</p>
+  </footer>
+</body>
+</html>
